@@ -8,7 +8,7 @@ assess on specific area as listed below:
 Pre-requisites:
  - Laptop (preferably mac) with Jenkins, Minikube (or alternative)
  - Text editor such as Atom, SublimeText, IntelliJ
- 
+
 Cloud
  - Using your favorite configuration management tool write the code to:
 1. Provision a virtual machine on your preferred cloud provider (AWS, Azure,
