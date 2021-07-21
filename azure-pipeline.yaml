@@ -36,9 +36,9 @@ stages:
 	  az storage account create --name tomcatstorage --resource-group storage-resource-group --location westus --sku Standard_RAGRS --kind StorageV2
      addSpnToEnvironment: true
     - script: |
+      displayName: 'Terraform init'
 	echo Terraform init
 	terraform init
-      displayName: 'Terraform init'
     - script: |
 	echo Terraform validate
 	terraform validate
@@ -48,12 +48,10 @@ stages:
 	echo Terraform plan
 	terraform plan
       displayName: 'Terraform plan'
-
     - script: |
 	echo Terraform apply
 	terraform apply -auto-approve
       displayName: 'Terraform apply'
-
 - stage: InstallSoftwares
     displayName: Install Required Softwares
     jobs:
@@ -66,7 +64,6 @@ stages:
         playbookPathOnAgentMachine: 'ansible'
         inventoriesAgentMachine: 'file'
         inventoryFileOnAgentMachine: 'ansible'
-
 - stage: BuildApplication
     displayName: Build Web application
     jobs:
@@ -84,7 +81,6 @@ stages:
 	publishJUnitResults: true
 	testResultsFiles: '**/surefire-reports/TEST-*.xml'
 	goals: 'package'
-
 - stage: DeployApplication
     displayName: Deploy Application
     jobs:
