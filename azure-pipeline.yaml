@@ -18,8 +18,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 - checkout: self  
 - task: AzureCLI@2
   inputs:
