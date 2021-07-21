@@ -1,4 +1,4 @@
-name: $(Date:yyyyMMdd)$(Rev:.r)
+name: Cloud-Domain-Assesment
 
 trigger:
   branches:
@@ -34,8 +34,7 @@ stages:
 	  az --version
 	  az account show
 	  az storage account create --name tomcatstorage --resource-group storage-resource-group --location westus --sku Standard_RAGRS --kind StorageV2
-	addSpnToEnvironment: true
-
+     addSpnToEnvironment: true
     - script: |
 	echo Terraform init
 	terraform init
@@ -43,13 +42,12 @@ stages:
     - script: |
 	echo Terraform validate
 	terraform validate
-    displayName: 'Terraform validate'
-
+      displayName: 'Terraform validate'
     - script: |
         az login 
 	echo Terraform plan
 	terraform plan
-    displayName: 'Terraform plan'
+      displayName: 'Terraform plan'
 
     - script: |
 	echo Terraform apply
