@@ -22,7 +22,7 @@
 #Install Tomcat - 
 1. checkout repo in a linux VM
 2. Change directory to Cloud-Domain-Assesment/ansible then execute playbook
-   ansible-playbook -i hosts tomcat-setup.yml
+   - ansible-playbook -i hosts tomcat-setup.yml
 
 #Deploy application packege war/ear into tomcat server  
 1. added this task in ADO pipeline 
