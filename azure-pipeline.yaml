@@ -25,35 +25,35 @@ stages:
     displayName: Terraform
     steps:	
     - checkout: self
-	- task: AzureCLI@2
-	  inputs:
-		azureSubscription: 'Azure Pass - Sponsorship(9604d4da-f16c-4b80-ac1b-34bd71a69ed3)'
-		scriptType: 'bash'
-		scriptLocation: 'inlineScript'
-		inlineScript: |
-		  az --version
-		  az account show
-		addSpnToEnvironment: true
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'Azure Pass - Sponsorship(9604d4da-f16c-4b80-ac1b-34bd71a69ed3)'
+	scriptType: 'bash'
+	scriptLocation: 'inlineScript'
+	inlineScript: |
+	  az --version
+	  az account show
+	addSpnToEnvironment: true
 
-	- script: |
-		echo Terraform init
-		terraform init
-	  displayName: 'Terraform init'
-	- script: |
-		echo Terraform validate
-		terraform validate
-	  displayName: 'Terraform validate'
+    - script: |
+	echo Terraform init
+	terraform init
+      displayName: 'Terraform init'
+    - script: |
+	echo Terraform validate
+	terraform validate
+    displayName: 'Terraform validate'
 
-	- script: |
-		az login 
-		echo Terraform plan
-		terraform plan
-	  displayName: 'Terraform plan'
+    - script: |
+        az login 
+	echo Terraform plan
+	terraform plan
+    displayName: 'Terraform plan'
 
-	- script: |
-		echo Terraform apply
-		terraform apply -auto-approve
-	  displayName: 'Terraform apply'
+    - script: |
+	echo Terraform apply
+	terraform apply -auto-approve
+      displayName: 'Terraform apply'
 
 - stage: InstallSoftwares
     displayName: Install Required Softwares
@@ -74,17 +74,17 @@ stages:
     - job: Java Build
     displayName: Java Build
     steps:	
-	- task: Maven@3
-	  displayName: MavenBuild
-	  inputs:
-		mavenPomFile: 'pom.xml'
-		mavenOptions: '-Xmx3072m'
-		javaHomeOption: 'JDKVersion'
-		jdkVersionOption: '1.8'
-		jdkArchitectureOption: 'x64'
-		publishJUnitResults: true
-		testResultsFiles: '**/surefire-reports/TEST-*.xml'
-		goals: 'package'
+    - task: Maven@3
+      displayName: MavenBuild
+      inputs:
+	mavenPomFile: 'pom.xml'
+	mavenOptions: '-Xmx3072m'
+	javaHomeOption: 'JDKVersion'
+	jdkVersionOption: '1.8'
+	jdkArchitectureOption: 'x64'
+	publishJUnitResults: true
+	testResultsFiles: '**/surefire-reports/TEST-*.xml'
+	goals: 'package'
 
 - stage: DeployApplication
     displayName: Deploy Application
