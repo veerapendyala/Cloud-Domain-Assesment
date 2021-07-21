@@ -32,6 +32,7 @@
 Multi stage ADO pipeline to 
 - Provision a VM in Azure cloud
 - Install tomcat into VM
+- Build Application - into a war file
 - Deploy a war file into Tomcat server 
  
 
